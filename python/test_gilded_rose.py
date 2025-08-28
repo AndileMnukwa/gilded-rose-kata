@@ -9,7 +9,9 @@ class GildedRoseTest(unittest.TestCase):
         items = [Item("foo", 0, 0)]
         gilded_rose = GildedRose(items)
         gilded_rose.update_quality()
-        self.assertEqual("fixme", items[0].name)
+        self.assertEqual("foo", items[0].name)  # Name should stay the same
+        self.assertEqual(-1, items[0].sell_in)  # sell_in should decrease
+        self.assertEqual(0, items[0].quality)   # quality stays 0 (can't go negative)
 
     # Add comprehensive tests for all business rules
     def test_normal_item_quality_decreases(self):
